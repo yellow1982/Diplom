@@ -1,0 +1,27 @@
+{% extends "JKH_site/base.html" %}
+{% load static %}
+{% block title %}Добавление нового товара{% endblock title %}
+{% block content %}
+
+    <div class="form-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label class="small mb-1">Добавить фотографию:</label> {{form.product_image}}
+                        <label class="small mb-1">Название товара:</label> {{form.product_name}}
+                        <p></p>
+                        <label class="small mb-1">Категория товара:</label> {{form.product_category}}
+                        <label class="small mb-1">Описание товара:</label> {{form.product_info}}
+                        <label class="small mb-1">Цена:</label> {{form.product_price}}
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-dark btn-lg">Добавить товар в магазин</button>
+            <button type="reset" class="btn btn-dark btn-lg">Отменить</button>
+        </form>
+    </div>
+{% endblock content %}

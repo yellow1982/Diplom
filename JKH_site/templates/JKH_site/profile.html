@@ -1,0 +1,38 @@
+{% extends "JKH_site/base.html" %}
+{% load static %}
+{% block title %}Профиль пользователя{% endblock title %}
+{% block content %}
+
+
+    <div class="form-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label class="small mb-1">Фото профиля:</label>
+            <div class="card" style="width: 24rem;">
+                <img src="{{ user.profile.photo.url }}" class="card-img-top" alt="Фото">
+                <div class="card-body">{{ profile_form.photo }}</div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="small mb-1">Логин:</label> {{user_form.username}}
+                        <label class="small mb-1">Имя:</label> {{user_form.first_name}}
+                        <label class="small mb-1">Фамилия:</label> {{user_form.last_name}}
+                        <label class="small mb-1">email:</label> {{user_form.email}}
+                    </div>
+
+                    <label class="small mb-1">Адрес:</label> {{profile_form.address}}
+                    <label class="small mb-1">Телефонный номер:</label> {{profile_form.phone_number}}
+                    <label class="small mb-1">Название компании:</label> {{profile_form.company_name}}
+                    <label class="small mb-1">Информация о компании:</label> {{profile_form.company_info}}
+                </div>
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-dark btn-lg">Сохранить изменения</button>
+            <button type="reset" class="btn btn-dark btn-lg">Отменить</button>
+        </form>
+    </div>
+{% endblock content %}

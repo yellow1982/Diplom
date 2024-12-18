@@ -1,0 +1,56 @@
+{% extends "JKH_site/base.html" %}
+{% load static %}
+{% block title %}Мои товары{% endblock title %}
+{% block content %}
+
+ <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+     <div class="collapse navbar-collapse" id="navbarNav">
+         <ul class="navbar-nav">
+             <a class="nav-link" href="{% url 'JKH_site:product_adding' %}">Добавить новый товар</a>
+             <a class="nav-link" href="{% url 'JKH_site:trades' %}">Вернуться в раздел товаров</a>
+         </ul>
+     </div>
+ </nav>
+
+<div class="row row-cols-1 row-cols-md-5">
+    {% for i in products %}
+        <div class="col">
+            <div class="card h-100" style="width: 15rem;">
+                <img src="{{ i.product_image.url }}" class="card-img-top" alt="Фото товара">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.product_name}}</h5>
+                        <p class="card-text">{{i.product_info}}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Цена: {{i.product_price}} руб.</li>
+                        <li class="list-group-item">Продавец: {{i.user.profile.company_name}}</li>
+                        <li class="list-group-item">Контактный телефон: {{i.user.profile.phone_number}}</li>
+                    </ul>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{i.id}}">
+                        Удалить товар
+                    </button>
+
+                <div class="modal fade" id="deleteModal{{i.id}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="deleteModalLabel">Удаление товара</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                            </div>
+                        <div class="modal-body">
+                            Вы действительно хотите безвозвратно удалить {{i.product_name}}?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                            <a href="{% url 'JKH_site:product_delete' i.id %}"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Удалить</button></a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% endblock content %}

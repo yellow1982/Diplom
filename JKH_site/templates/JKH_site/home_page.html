@@ -1,0 +1,54 @@
+{% extends "JKH_site/base.html" %}
+{% block content %}
+{% load static %}
+
+    <p></p>
+    <div class="row">
+        <div class="col">
+          <div class="card h-100" style="width: 18rem;">
+            <img src="{% static '/media/images/trade.jpg' %}" class="card-img-top" alt="Фото товаров">
+            <div class="card-body">
+                <h5 class="card-title">Товары</h5>
+                <p class="card-text">В этом разделе Вы можете приобрести товары, предлагаемые Вашими соседями,
+                    а также разместить свои предложения</p>
+                <a href="{% url 'JKH_site:trades' %}" class="btn btn-primary">В раздел</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100" style="width: 18rem;">
+            <img src="{% static '/media/images/service.jpg' %}" class="card-img-top" alt="Фото услуг">
+            <div class="card-body">
+                <h5 class="card-title">Услуги</h5>
+                <p class="card-text">В этом разделе Вы можете заказать услугу, предлагаемую Вашими соседями,
+                    а также разместить свои предложения и услуги</p>
+                <a href="#" class="btn btn-primary">В раздел</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100" style="width: 18rem;">
+            <img src="{% static '/media/images/chat.jpg' %}" class="card-img-top" alt="Фото новостей" height="190px">
+            <div class="card-body">
+                <h5 class="card-title">Общий чат</h5>
+                <p class="card-text">В этом разделе Вы можете пообщаться с соседями,
+                    задать интересующие Вас вопросы, сделать общее объявление, обсудить новости.
+                </p>
+                <a href="#" class="btn btn-primary">В раздел</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100" style="width: 18rem;">
+            <img src="{% static '/media/images/admin.jpeg' %}" class="card-img-top" alt="Фото взаимодействия с администрацией" height="190px">
+            <div class="card-body">
+                <h5 class="card-title">Взаимодействие с администрацией</h5>
+                <p class="card-text">В этом разделе Вы можете написать обращение главе поселения,
+                    заказать справки и выписки.
+                </p>
+                <a href="#" class="btn btn-primary">В раздел</a>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}
